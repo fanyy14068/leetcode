@@ -7,22 +7,23 @@ package com.fanyy.leetcode.quetsions;
 
 public class Demo {
     public static void main(String[] args) {
-        int[] a= {10, 3, 8, 9, 4};
-        String[] b = new Solution().findRelativeRanks(a);
-        for (String i: b) {
-            System.out.println(i);
-        }
+        int[][] a = {{1, 2, 3}, {4, 5, 6}};
+        System.out.println(a.length);
+        System.out.println(a[0].length);
+
+        System.out.println(pow(2, 10));
     }
 
-
-    public static ListNode transToListNode(int[] nums) {
-        ListNode head = new ListNode();
-        ListNode node = head;
-        for(int i: nums) {
-            node.next = new ListNode(i);
-            node = node.next;
+    public static int pow(int a, int n) {
+        int r = 1;
+        while(n > 0) {
+            if ((n & 1) == 1) {
+                r = r * a;
+            }
+            n >>= 1;
+            a = a*a;
         }
-        return head.next;
+        return r;
     }
 
 
