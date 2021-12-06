@@ -30,25 +30,6 @@ public class No0746 {
             return curr;
         }
 
-        public int rob(int[] nums) {
-
-            if (nums.length == 1) {
-                return nums[0];
-            } else if (nums.length == 2) {
-                return Math.max(nums[0], nums[1]);
-            }
-            int pre = nums[0];
-            int cur = Math.max(nums[0], nums[1]);
-            int next = 0;
-            for(int i=2;i<nums.length;i++) {
-                next = Math.max(nums[i]+pre, cur);
-                pre = cur;
-                cur = next;
-            }
-            return next;
-
-        }
-
         public int maxSubArray(int[] nums) {
             if (nums.length == 1) {
                 return nums[0];
