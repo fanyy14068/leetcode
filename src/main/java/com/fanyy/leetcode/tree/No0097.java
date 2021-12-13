@@ -7,31 +7,32 @@ package com.fanyy.leetcode.tree;
 
 public class No0097 {
     static class Solution {
+        /**
+         * Tips: 双指针会有问题，所以采用动态规划
+         * 动态规划　f(i, j) = (f(i-1, j) && s3(i+j-1)=s1(i-1)) || (f(i, j-1) && s3(i+j-1)=s2(j-1))
+         */
         public boolean isInterleave(String s1, String s2, String s3) {
-            int p1 = 0;
-            int p2 = 0;
-            boolean ret = true;
-            int c = 0;
-            if (s3 == "") {
-                return s1 == "" && s2 == "";
+            int m = s1.length();
+            int n = s2.length();
+            int t = s3.length();
+            if (m + n != t) {
+                return false;
             }
-            while(p1 < s1.length() || p2 < s2.length()) {
-                if (c >= s3.length()) {
-                    return false;
-                }
-                if (p1 < s1.length() && s3.charAt(c) == s1.charAt(p1)) {
-                    p1 += 1;
-                    c += 1;
-                } else if (p2 < s2.length() && s3.charAt(c) == s2.charAt(p2)) {
-                    p2 += 1;
-                    c += 1;
-                } else {
-                    return false;
-                }
+            boolean[][] dp = new boolean[m+1][n+1];
+            dp[0][0] = true;
 
+            for(int i=0;i<=m;i++) {
+                for(int j=0;j<=n;j++) {
+                    if (i > 0) {
+                        dp[i][j] |= dp[i-1][j] && s1.charAt(i-1) == s3.charAt(i+j-1) ;
+                    }
+                    if (j > 0) {
+                        dp[i][j] |= dp[i][j-1] && s2.charAt(j-1) == s3.charAt(i+j-1);
+                    }
 
+                }
             }
-            return ret;
+            return dp[m][n];
 
         }
     }
