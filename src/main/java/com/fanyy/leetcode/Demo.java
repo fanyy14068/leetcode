@@ -9,11 +9,9 @@ import java.util.*;
 
 public class Demo {
     public static void main(String[] args) {
-        int x = 4;
-        while(x > 0) {
-            int rx = x & 1;
-            x >>= 1;
-        }
-
+        int s = 0;
+        StringBuffer sb = new StringBuffer();
+        sb.append(s);
+        System.out.print(sb.toString());
     }
 }
