@@ -1,7 +1,6 @@
 package com.fanyy.leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author: fanyy
@@ -10,8 +9,11 @@ import java.util.Map;
 
 public class Demo {
     public static void main(String[] args) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for(Map.Entry<Integer, Integer> m: map.entrySet()) {}
+        int x = 4;
+        while(x > 0) {
+            int rx = x & 1;
+            x >>= 1;
+        }
 
     }
 }
