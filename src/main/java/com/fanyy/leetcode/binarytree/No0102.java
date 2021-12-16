@@ -9,7 +9,7 @@ import java.util.*;
  * @data 12/14/21
  */
 
-public class No102 {
+public class No0102 {
     static public class TreeNode {
         int val;
         TreeNode left;
