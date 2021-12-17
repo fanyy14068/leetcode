@@ -71,12 +71,45 @@ public class No0028 {
                 bc[ascii] = i;
             }
         }
+
+
+        public int kmp(String haystack, String needle) {
+            int[] next = getNext(needle);
+            int j = 0;
+            for(int i=0;i<haystack.length() ;i++) {
+                while(j > 0 && haystack.charAt(i) != needle.charAt(j)) {
+                    j = next[j];
+                }
+                if (haystack.charAt(i) == needle.charAt(j)) {
+                    j++;
+                }
+                if (j == needle.length()) {
+                    return i - needle.length() + 1;
+                }
+            }
+            return -1;
+        }
+
+        public int[] getNext(String pattern) {
+            int[] next = new int[pattern.length()];
+            int j = 0;
+            for(int i=2;i<pattern.length();i++) {
+                while(j!=0 && pattern.charAt(j) != pattern.charAt(i-1)) {
+                    j = next[j];
+                }
+                if (pattern.charAt(j) == pattern.charAt(i-1)) {
+                    j++;
+                }
+                next[i] = j;
+            }
+            return next;
+        }
     }
 
     public static void main(String[] args) {
 //        System.out.println(new Solution().strStr("a", "a"));
-        System.out.println(new Solution().bm("mississippi", "issi"));
-        System.out.println(new Solution().bm("hello", "ll"));
+        System.out.println(new Solution().kmp("mississippi", "issi"));
+        System.out.println(new Solution().kmp("aaa", "aaa"));
 
     }
 }
