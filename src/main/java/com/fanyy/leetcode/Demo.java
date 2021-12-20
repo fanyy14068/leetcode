@@ -9,9 +9,30 @@ import java.util.*;
 
 public class Demo {
     public static void main(String[] args) {
-        int s = 0;
-        StringBuffer sb = new StringBuffer();
-        sb.append(s);
-        System.out.print(sb.toString());
+//        Square id = new Square(2);
+//        System.out.println(id.getArea());
+        System.out.println(2 & 1);
+    }
+
+
+}
+
+class Square {
+    int side;
+
+    public Square() {
+        this(1);
+    }
+
+    public Square(int side) {
+        this.side = side;
+    }
+
+    public int getPerimeter() {
+        return this.side * 4;
+    }
+
+    public int getArea() {
+        return this.side * this.side;
     }
 }
